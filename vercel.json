@@ -1,11 +1,7 @@
 {
-  "version": 2,
   "framework": null,
-  "installCommand": "echo \"no install\"",
-  "buildCommand": "echo \"no build\"",
-  "rewrites": [
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/projects", "destination": "/projects.html" },
-    { "source": "/contact", "destination": "/contact.html" }
-  ]
+  "installCommand": "echo 'Skipping install'",
+  "buildCommand": "mkdir -p dist && cp -R index.html about.html projects.html contact.html favicon.ico icon.png apple-icon.png css fonts images videos chunks js dist/",
+  "outputDirectory": "dist",
+  "cleanUrls": true
 }

@@ -1,7 +1,7 @@
 import PageShell from '@/components/layout/PageShell';
 
 export const metadata = {
-  title: 'chkstepan | Privacy Policy',
+  title: 'Brick and Soul | Privacy Policy',
   alternates: { canonical: '/privacy' },
 };
 
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
         <p style={{ maxWidth: '720px', lineHeight: 1.6 }}>
           This site does not sell personal data. Information submitted through the contact form is
           used only to respond to your inquiry. For questions, email{' '}
-          <a href="mailto:chkstepan11@gmail.com">chkstepan11@gmail.com</a>.
+          <a href="mailto:Bricknsoul@gamil.com">Bricknsoul@gamil.com</a>.
         </p>
       </div>
     </PageShell>

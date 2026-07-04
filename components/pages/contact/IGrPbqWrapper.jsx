@@ -74,18 +74,15 @@ export default function IGrPbqWrapper() {
             <section className="style-module-scss-module__IGrPbq__contactInfo">
               <div className="style-module-scss-module__IGrPbq__contactInfoRow">
                 <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <p style={{ transform: 'translateY(108%)' }}>Identity</p>
+                  <p style={{ transform: 'translateY(108%)' }}>Studio</p>
                 </div>
                 <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <a
-                    href="https://www.linkedin.com/in/stepan-chokobok"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <p
                     className="style-module-scss-module__IGrPbq__contactLink"
                     style={{ transform: 'translateY(108%)' }}
                   >
-                    Stepan Chokobok
-                  </a>
+                    Brick and Soul
+                  </p>
                 </div>
               </div>
               <div className="style-module-scss-module__IGrPbq__contactInfoRow">
@@ -93,7 +90,7 @@ export default function IGrPbqWrapper() {
                   <p style={{ transform: 'translateY(108%)' }}>Based In</p>
                 </div>
                 <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <p style={{ transform: 'translateY(108%)' }}>Europe, Romania</p>
+                  <p style={{ transform: 'translateY(108%)' }}>India</p>
                 </div>
               </div>
               <div className="style-module-scss-module__IGrPbq__contactInfoRow">
@@ -106,7 +103,7 @@ export default function IGrPbqWrapper() {
                     className="style-module-scss-module__IGrPbq__timeNode"
                     style={{ transform: 'translateY(108%)' }}
                   >
-                    00:00:00 (EET)
+                    00:00:00 (IST)
                   </p>
                 </div>
               </div>
@@ -116,54 +113,22 @@ export default function IGrPbqWrapper() {
                 </div>
                 <div className="style-module-scss-module__IGrPbq__cellMask">
                   <a
-                    href="mailto:chkstepan11@gmail.com"
+                    href="mailto:Bricknsoul@gamil.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="style-module-scss-module__IGrPbq__contactLink"
                     style={{ transform: 'translateY(108%)' }}
                   >
-                    chkstepan11@gmail.com
+                    Bricknsoul@gamil.com
                   </a>
                 </div>
               </div>
               <div className="style-module-scss-module__IGrPbq__contactInfoRow">
                 <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <p style={{ transform: 'translateY(108%)' }}>Collaboration</p>
+                  <p style={{ transform: 'translateY(108%)' }}>Services</p>
                 </div>
                 <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <p style={{ transform: 'translateY(108%)' }}>Freelance & Partners</p>
-                </div>
-              </div>
-              <div className="style-module-scss-module__IGrPbq__contactInfoRow">
-                <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <p style={{ transform: 'translateY(108%)' }}>LinkedIn</p>
-                </div>
-                <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <a
-                    href="https://www.linkedin.com/company/chkstepan"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="style-module-scss-module__IGrPbq__contactLink"
-                    style={{ transform: 'translateY(108%)' }}
-                  >
-                    /company/chkstepan
-                  </a>
-                </div>
-              </div>
-              <div className="style-module-scss-module__IGrPbq__contactInfoRow">
-                <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <p style={{ transform: 'translateY(108%)' }}>Dribbble</p>
-                </div>
-                <div className="style-module-scss-module__IGrPbq__cellMask">
-                  <a
-                    href="https://dribbble.com/chkstepan"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="style-module-scss-module__IGrPbq__contactLink"
-                    style={{ transform: 'translateY(108%)' }}
-                  >
-                    /chkstepan
-                  </a>
+                  <p style={{ transform: 'translateY(108%)' }}>Design & Turnkey</p>
                 </div>
               </div>
               <div className="style-module-scss-module__IGrPbq__contactInfoRow">
@@ -172,13 +137,13 @@ export default function IGrPbqWrapper() {
                 </div>
                 <div className="style-module-scss-module__IGrPbq__cellMask">
                   <a
-                    href="https://www.instagram.com/chkstepan.dev"
+                    href="https://www.instagram.com/brick_n_soul/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="style-module-scss-module__IGrPbq__contactLink"
                     style={{ transform: 'translateY(108%)' }}
                   >
-                    @chkstepan.dev
+                    @brick_n_soul
                   </a>
                 </div>
               </div>

@@ -25,19 +25,19 @@ export default function Footer() {
                       <div>
                         <div className="style-module-scss-module__jMWBMW__lineMask">
                           <a
-                            href="mailto:chkstepan11@gmail.com"
+                            href="mailto:Bricknsoul@gamil.com"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="style-module-scss-module__jMWBMW__link "
                           >
                             <span className="style-module-scss-module__jMWBMW__linkText style-module-scss-module__jMWBMW__linkTextWhite style-module-scss-module__jMWBMW__linkTextBottom">
-                              chkstepan11@gmail.com
+                              Bricknsoul@gamil.com
                             </span>
                           </a>
                         </div>
                       </div>
                       <p className="style-module-scss-module__1eBtna__bottomText">
-                        Europe, Romania - <span>:</span>
+                        India - <span>:</span>
                       </p>
                     </div>
                     <div className="style-module-scss-module__1eBtna__col style-module-scss-module__1eBtna__colLeft">
@@ -85,41 +85,13 @@ export default function Footer() {
                       <div>
                         <div className="style-module-scss-module__jMWBMW__lineMask">
                           <a
-                            href="https://www.instagram.com/chkstepan.dev"
+                            href="https://www.instagram.com/brick_n_soul/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="style-module-scss-module__jMWBMW__link "
                           >
                             <span className="style-module-scss-module__jMWBMW__linkText style-module-scss-module__jMWBMW__linkTextWhite style-module-scss-module__jMWBMW__linkTextBottom">
                               instagram
-                            </span>
-                          </a>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="style-module-scss-module__jMWBMW__lineMask">
-                          <a
-                            href="https://www.linkedin.com/company/chkstepan"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="style-module-scss-module__jMWBMW__link "
-                          >
-                            <span className="style-module-scss-module__jMWBMW__linkText style-module-scss-module__jMWBMW__linkTextWhite">
-                              linkedin
-                            </span>
-                          </a>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="style-module-scss-module__jMWBMW__lineMask">
-                          <a
-                            href="https://dribbble.com/chkstepan"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="style-module-scss-module__jMWBMW__link "
-                          >
-                            <span className="style-module-scss-module__jMWBMW__linkText style-module-scss-module__jMWBMW__linkTextWhite">
-                              dribbble
                             </span>
                           </a>
                         </div>
@@ -145,7 +117,7 @@ export default function Footer() {
                     style={{ backgroundColor: '#729e84', transform: 'scaleX(0)' }}
                   />
                   <img
-                    alt="chkstepan"
+                    alt="Brick and Soul"
                     loading="lazy"
                     width={280}
                     height={280}

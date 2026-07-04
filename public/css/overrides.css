@@ -1,0 +1,56 @@
+/* Brick and Soul — layout-safe text overrides */
+
+.style-module-scss-module__RsorJa__body {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.style-module-scss-module__RsorJa__word {
+  font-size: clamp(2rem, 9.5vw, 14rem) !important;
+  line-height: 0.95 !important;
+  white-space: nowrap;
+}
+
+.style-module-scss-module__RsorJa__subTitleBody {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.style-module-scss-module__RsorJa__subWord {
+  font-size: clamp(1.5rem, 9vw, 12rem) !important;
+  white-space: nowrap;
+}
+
+.style-module-scss-module__RsorJa__statMask p {
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  white-space: nowrap;
+}
+
+.style-module-scss-module__RsorJa__subWord {
+  white-space: nowrap;
+}
+
+.style-module-scss-module__UBLvha__title {
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem) !important;
+  line-height: 1.05 !important;
+  max-width: 100%;
+}
+
+.style-module-scss-module__EDzIIq__cardTitle {
+  font-size: clamp(1.25rem, 2vw, 1.75rem) !important;
+  line-height: 1.15 !important;
+}
+
+.style-module-scss-module__UBLvha__cardImageLabel {
+  font-size: clamp(0.65rem, 0.9vw, 0.85rem) !important;
+  white-space: nowrap;
+}
+
+.style-module-scss-module__jMWBMW__linkText {
+  word-break: break-all;
+}
+
+.style-module-scss-module__XTAiwa__title {
+  font-size: clamp(2rem, 4.5vw, 3.5rem) !important;
+  line-height: 1.1 !important;
+}

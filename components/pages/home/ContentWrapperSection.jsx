@@ -83,12 +83,11 @@ export default function ContentWrapperSection() {
                 </div>
                 <div className="style-module-scss-module__bZf5Ta__textLine">
                   <span className="style-module-scss-module__bZf5Ta__simpleFont">What</span>
-                  <span className="style-module-scss-module__bZf5Ta__simpleFont">You</span>
-                  <span className="style-module-scss-module__bZf5Ta__simpleFont">Get</span>
+                  <span className="style-module-scss-module__bZf5Ta__simpleFont">Happens</span>
                 </div>
                 <div className="style-module-scss-module__bZf5Ta__textLine">
                   <span className="style-module-scss-module__bZf5Ta__simpleFont">When</span>
-                  <span className="style-module-scss-module__bZf5Ta__simpleFont">Clarity</span>
+                  <span className="style-module-scss-module__bZf5Ta__simpleFont">Space</span>
                 </div>
                 <div className="style-module-scss-module__bZf5Ta__textLine">
                   <span className="style-module-scss-module__bZf5Ta__simpleFont">Meets</span>
@@ -124,32 +123,27 @@ export default function ContentWrapperSection() {
                         <div className="style-module-scss-module__UBLvha__descriptionWrapper">
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              I work closely with brands to craft thoughtful, scalable
+                              A space that doesn&apos;t function is just decoration. We
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              design systems built for long-term growth and consistency,
+                              start with how you live and move — then design around that.
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              translating ideas into structured and cohesive visual
+                              From site analysis and floor planning to structural
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              language from art direction and strong visual foundations to
+                              coordination, every decision is rooted in purpose. A
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              responsive interfaces and polished digital experiences that
-                            </span>
-                          </div>
-                          <div className="style-module-scss-module__UBLvha__descriptionLineMask">
-                            <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              feel intuitive, refined, and built to evolve over time.
+                              foundation that feels as good as it looks.
                             </span>
                           </div>
                         </div>
@@ -158,14 +152,14 @@ export default function ContentWrapperSection() {
                         <div className="style-module-scss-module__UBLvha__titleGroup">
                           <Link
                             className="style-module-scss-module__UBLvha__titleLink"
-                            href="/about"
+                            href="/projects"
                           >
-                            <p className="style-module-scss-module__UBLvha__title">Design</p>
+                            <p className="style-module-scss-module__UBLvha__title">Architecture</p>
                             <div className="style-module-scss-module__UBLvha__titleUnderline" />
                           </Link>
                           <Link
                             className="style-module-scss-module__UBLvha__cardLinkInner"
-                            href="/about"
+                            href="/projects"
                           >
                             <span className="style-module-scss-module__UBLvha__cardLinkText">
                               Learn more
@@ -222,7 +216,7 @@ export default function ContentWrapperSection() {
                       />
                       <div className="style-module-scss-module__UBLvha__cardImageLabelMask">
                         <p className="style-module-scss-module__UBLvha__cardImageLabel">
-                          ( it's intention )
+                          ( form follows function )
                         </p>
                       </div>
                     </div>
@@ -242,32 +236,22 @@ export default function ContentWrapperSection() {
                         <div className="style-module-scss-module__UBLvha__descriptionWrapper">
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              Web systems built to move fast, test ideas, and measure real
+                              This is where a space gets its soul — full interiors for
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              results. Full-stack development across front-end, back-end,
+                              homes, offices, cafés, and hospitality. From concept boards
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              and databases, with experience in custom architectures and
+                              and palettes to 3D visualization — see your space before
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              production-ready builds. From clean interfaces to reliable
-                            </span>
-                          </div>
-                          <div className="style-module-scss-module__UBLvha__descriptionLineMask">
-                            <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              server logic, the focus is on performance, maintainability,
-                            </span>
-                          </div>
-                          <div className="style-module-scss-module__UBLvha__descriptionLineMask">
-                            <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              and systems that scale without unnecessary complexity.
+                              a wall goes up. No guesswork. A vision you can walk into.
                             </span>
                           </div>
                         </div>
@@ -276,17 +260,17 @@ export default function ContentWrapperSection() {
                         <div className="style-module-scss-module__UBLvha__titleGroup">
                           <Link
                             className="style-module-scss-module__UBLvha__titleLink"
-                            href="/about"
+                            href="/projects"
                           >
-                            <p className="style-module-scss-module__UBLvha__title">Engineering</p>
+                            <p className="style-module-scss-module__UBLvha__title">Interior Design</p>
                             <div className="style-module-scss-module__UBLvha__titleUnderline" />
                           </Link>
                           <Link
                             className="style-module-scss-module__UBLvha__cardLinkInner"
-                            href="/about"
+                            href="/projects"
                           >
                             <span className="style-module-scss-module__UBLvha__cardLinkText">
-                              Learn more
+                              View work
                             </span>
                             <div className="style-module-scss-module__UBLvha__cardLinkIconWrapper">
                               <div
@@ -327,7 +311,7 @@ export default function ContentWrapperSection() {
                     <div className="style-module-scss-module__UBLvha__cardImage style-module-scss-module__UBLvha__engineeringImage">
                       <div className="style-module-scss-module__UBLvha__cardImageLabelMask">
                         <p className="style-module-scss-module__UBLvha__cardImageLabel">
-                          ( every L is data )
+                          ( feel it before built )
                         </p>
                       </div>
                       <img
@@ -359,37 +343,22 @@ export default function ContentWrapperSection() {
                         <div className="style-module-scss-module__UBLvha__descriptionWrapper">
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              Strategic thinking built on precision, efficiency, and
+                              Design is half the story — we stay through execution, managing
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              technical expertise. Every project considers goals,
+                              vendors, materials, timelines, and on-site decisions. You
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              competitive context, SEO, and conversion from the start,
+                              don&apos;t chase contractors. Walk into a finished space,
                             </span>
                           </div>
                           <div className="style-module-scss-module__UBLvha__descriptionLineMask">
                             <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              forming a clear foundation for design and development. The
-                            </span>
-                          </div>
-                          <div className="style-module-scss-module__UBLvha__descriptionLineMask">
-                            <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              process stays focused and deliberate, removing unnecessary
-                            </span>
-                          </div>
-                          <div className="style-module-scss-module__UBLvha__descriptionLineMask">
-                            <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              discussions and early bottlenecks to keep projects moving
-                            </span>
-                          </div>
-                          <div className="style-module-scss-module__UBLvha__descriptionLineMask">
-                            <span className="style-module-scss-module__UBLvha__descriptionLine">
-                              fast and predictable.
+                              ready to live or work in — exactly as designed.
                             </span>
                           </div>
                         </div>
@@ -398,14 +367,14 @@ export default function ContentWrapperSection() {
                         <div className="style-module-scss-module__UBLvha__titleGroup">
                           <Link
                             className="style-module-scss-module__UBLvha__titleLink"
-                            href="/about"
+                            href="/contact"
                           >
-                            <p className="style-module-scss-module__UBLvha__title">Strategy</p>
+                            <p className="style-module-scss-module__UBLvha__title">Turnkey</p>
                             <div className="style-module-scss-module__UBLvha__titleUnderline" />
                           </Link>
                           <Link
                             className="style-module-scss-module__UBLvha__cardLinkInner"
-                            href="/about"
+                            href="/contact"
                           >
                             <span className="style-module-scss-module__UBLvha__cardLinkText">
                               Learn more
@@ -462,7 +431,7 @@ export default function ContentWrapperSection() {
                       />
                       <div className="style-module-scss-module__UBLvha__cardImageLabelMask">
                         <p className="style-module-scss-module__UBLvha__cardImageLabel">
-                          ( choosing the right problem )
+                          ( we handle the rest )
                         </p>
                       </div>
                     </div>
@@ -504,15 +473,15 @@ export default function ContentWrapperSection() {
                     />
                   </div>
                   <p className="style-module-scss-module__XTAiwa__title">
-                    Ready to build something
+                    Ready to find your space&apos;s
                     <br />
-                    that actually works?
+                    story and soul?
                   </p>
                 </div>
                 <p className="style-module-scss-module__XTAiwa__description">
-                  Clear design, solid engineering, and focused
+                  Architecture, interior design, and turnkey
                   <br />
-                  strategy — working together as one system.
+                  delivery — unified from start to finish.
                 </p>
                 <div>
                   <div style={{ display: 'inline-block' }}>

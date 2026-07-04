@@ -1,7 +1,7 @@
 import ProjectsPageContent from '@/components/pages/projects';
 
 export const metadata = {
-  title: 'chkstepan | Projects',
+  title: 'Brick and Soul | Projects',
   alternates: { canonical: '/projects' },
 };
 

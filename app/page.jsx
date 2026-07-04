@@ -1,7 +1,7 @@
 import HomePageContent from '@/components/pages/home';
 
 export const metadata = {
-  title: 'chkstepan | Overview',
+  title: 'Brick and Soul | Overview',
   alternates: { canonical: '/' },
 };
 

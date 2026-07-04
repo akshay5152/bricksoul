@@ -7,7 +7,7 @@ export const PAGE_PATHS = {
 
 export const NAV_ITEMS = [
   { href: '/', label: 'Overview', marquee: 'Start Fresh' },
-  { href: '/about', label: 'About', marquee: 'My Journey' },
+  { href: '/about', label: 'About', marquee: 'Our Story' },
   { href: '/projects', label: 'Projects', marquee: 'Recent Work' },
   { href: '/contact', label: 'Contact', marquee: "Let's Talk" },
 ];

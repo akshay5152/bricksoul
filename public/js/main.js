@@ -1072,7 +1072,7 @@
       if (!typeEl) return;
       var textSpan = typeEl.querySelector('span[style*="color"]') || typeEl.querySelector('span:first-child');
       if (!textSpan) return;
-      var words = ['Performance', 'Intention', 'Precision', 'Strategy', 'Execution'];
+      var words = ['Soul', 'Story', 'Design', 'Space', 'Home'];
       var wi = 0, ci = 0, deleting = false;
       function type() {
         var word = words[wi];
@@ -1768,9 +1768,9 @@
                   onUpdate: function () { el.textContent = dec ? this._targets[0].v.toFixed(1) : Math.floor(this._targets[0].v); }
                 });
               }
-              cu('.style-module-scss-module__RsorJa__countFirst', 15, false, 2.2);
-              cu('.style-module-scss-module__RsorJa__countSecond', 4, false, 1.8);
-              cu('.style-module-scss-module__RsorJa__countDecimal', 99.8, true, 2.5);
+              cu('.style-module-scss-module__RsorJa__countFirst', 20, false, 2.2);
+              cu('.style-module-scss-module__RsorJa__countSecond', 5, false, 1.8);
+              cu('.style-module-scss-module__RsorJa__countDecimal', 100, false, 2.5);
             }
           });
         }

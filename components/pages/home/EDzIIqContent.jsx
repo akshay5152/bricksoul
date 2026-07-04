@@ -12,19 +12,19 @@ export default function EDzIIqContent() {
                   className="style-module-scss-module__EDzIIq__title"
                   style={{ transform: 'translateY(108%)' }}
                 >
-                  Strategy
+                  Approach
                 </p>
               </div>
               <div className="style-module-scss-module__EDzIIq__subTitle">
                 <div className="style-module-scss-module__EDzIIq__lineMask">
-                  <span style={{ transform: 'translateY(108%)' }}>How I Approach</span>
+                  <span style={{ transform: 'translateY(108%)' }}>How We Approach</span>
                 </div>{' '}
                 <div className="style-module-scss-module__EDzIIq__lineMask">
                   <span
                     className="style-module-scss-module__EDzIIq__bottomSpan"
                     style={{ transform: 'translateY(108%)' }}
                   >
-                    Every Project?
+                    Every Project
                   </span>
                 </div>
               </div>
@@ -690,12 +690,11 @@ export default function EDzIIqContent() {
             <div className="style-module-scss-module__rdV7za__inner">
               <div className="style-module-scss-module__rdV7za__card">
                 <div className="style-module-scss-module__EDzIIq__card">
-                  <p className="style-module-scss-module__EDzIIq__cardTitle">Performance First</p>
+                  <p className="style-module-scss-module__EDzIIq__cardTitle">Listen First</p>
                   <p className="style-module-scss-module__EDzIIq__cardDescription">
-                    I focus on building websites that load fast and feel smooth from the first
-                    interaction. Performance is considered at every stage, from structure and assets
-                    to code quality and optimization, ensuring reliable results on real devices and
-                    networks.
+                    Every great space starts with a conversation. We learn how you live,
+                    work, and want to feel — your routines and aspirations become the brief.
+                    The design follows from there.
                   </p>
                   <div className="style-module-scss-module__EDzIIq__cardLinkWrapper">
                     <div>
@@ -759,13 +758,12 @@ export default function EDzIIqContent() {
               <div className="style-module-scss-module__rdV7za__card">
                 <div className="style-module-scss-module__EDzIIq__card style-module-scss-module__EDzIIq__cardGreen">
                   <p className="style-module-scss-module__EDzIIq__cardTitle">
-                    Clean & Scalable Code
+                    Design With Purpose
                   </p>
                   <p className="style-module-scss-module__EDzIIq__cardDescription">
-                    I write clean, well-structured, and maintainable code with a strong focus on
-                    clarity and long-term scalability. This approach makes projects easier to
-                    understand, update, and extend over time, while reducing complexity and keeping
-                    the codebase reliable as it grows.
+                    We translate your brief into layouts, materials, moods, and 3D visuals —
+                    so you see and feel your space before a wall goes up. No guesswork.
+                    Just a clear vision to refine.
                   </p>
                   <div className="style-module-scss-module__EDzIIq__cardLinkWrapper">
                     <div>
@@ -779,7 +777,7 @@ export default function EDzIIqContent() {
                               className="style-module-scss-module__nquOPW__text style-module-scss-module__nquOPW__textBottom"
                               style={{ display: 'inline-block', transform: 'none' }}
                             >
-                              My workflow
+                              View designs
                             </span>
                           </div>
                           <div
@@ -828,26 +826,24 @@ export default function EDzIIqContent() {
               </div>
               <div className="style-module-scss-module__rdV7za__card">
                 <div className="style-module-scss-module__EDzIIq__card">
-                  <p className="style-module-scss-module__EDzIIq__cardTitle">Modern UI & UX</p>
+                  <p className="style-module-scss-module__EDzIIq__cardTitle">Build With Care</p>
                   <p className="style-module-scss-module__EDzIIq__cardDescription">
-                    I design and build interfaces with clarity, usability, and consistency in mind.
-                    Layouts, interactions, and responsive behavior are carefully crafted to provide
-                    an intuitive experience that works seamlessly across all devices and screen
-                    sizes.
+                    We manage vendors, materials, timelines, and quality on site. You stay
+                    informed without the overwhelm — we handle the chaos so you don&apos;t have to.
                   </p>
                   <div className="style-module-scss-module__EDzIIq__cardLinkWrapper">
                     <div>
                       <div className="style-module-scss-module__nquOPW__arrowLink style-module-scss-module__nquOPW__gray style-module-scss-module__EDzIIq__cardLink">
                         <Link
                           className="style-module-scss-module__nquOPW__linkContent"
-                          href="/projects"
+                          href="/about"
                         >
                           <div className="style-module-scss-module__nquOPW__lineMask">
                             <span
                               className="style-module-scss-module__nquOPW__text style-module-scss-module__nquOPW__textBottom"
                               style={{ display: 'inline-block', transform: 'none' }}
                             >
-                              View approach
+                              How we work
                             </span>
                           </div>
                           <div
@@ -896,28 +892,25 @@ export default function EDzIIqContent() {
               </div>
               <div className="style-module-scss-module__rdV7za__card">
                 <div className="style-module-scss-module__EDzIIq__card style-module-scss-module__EDzIIq__cardGreen">
-                  <p className="style-module-scss-module__EDzIIq__cardTitle">
-                    SEO & Best Practices
-                  </p>
+                  <p className="style-module-scss-module__EDzIIq__cardTitle">Hand Over Soul</p>
                   <p className="style-module-scss-module__EDzIIq__cardDescription">
-                    Websites are built using modern best practices and strong technical SEO
-                    foundations from the very beginning of the project. This includes clean
-                    structure, accessibility, semantic markup, and optimization techniques that
-                    support visibility, performance, and long-term growth.
+                    We don&apos;t just deliver a finished space — we deliver a feeling. When you
+                    walk in and think &quot;this is me,&quot; the job is done. Ready to live in,
+                    work in, and be proud of.
                   </p>
                   <div className="style-module-scss-module__EDzIIq__cardLinkWrapper">
                     <div>
                       <div className="style-module-scss-module__nquOPW__arrowLink style-module-scss-module__nquOPW__black style-module-scss-module__EDzIIq__cardLink">
                         <Link
                           className="style-module-scss-module__nquOPW__linkContent"
-                          href="/about"
+                          href="/projects"
                         >
                           <div className="style-module-scss-module__nquOPW__lineMask">
                             <span
                               className="style-module-scss-module__nquOPW__text"
                               style={{ display: 'inline-block', transform: 'none' }}
                             >
-                              See details
+                              View projects
                             </span>
                           </div>
                           <div
@@ -962,74 +955,6 @@ export default function EDzIIqContent() {
                     </div>
                   </div>
                   <span className="style-module-scss-module__EDzIIq__cardNumber">04</span>
-                </div>
-              </div>
-              <div className="style-module-scss-module__rdV7za__card">
-                <div className="style-module-scss-module__EDzIIq__card">
-                  <p className="style-module-scss-module__EDzIIq__cardTitle">Reliable Delivery</p>
-                  <p className="style-module-scss-module__EDzIIq__cardDescription">
-                    From the initial idea to the final launch, I focus on clear communication,
-                    thoughtful planning, and reliable delivery at every stage of the process. Each
-                    project is carefully tested and refined to ensure stability, quality, and
-                    confidence when the product goes live.
-                  </p>
-                  <div className="style-module-scss-module__EDzIIq__cardLinkWrapper">
-                    <div>
-                      <div className="style-module-scss-module__nquOPW__arrowLink style-module-scss-module__nquOPW__gray style-module-scss-module__EDzIIq__cardLink">
-                        <Link
-                          className="style-module-scss-module__nquOPW__linkContent"
-                          href="/about"
-                        >
-                          <div className="style-module-scss-module__nquOPW__lineMask">
-                            <span
-                              className="style-module-scss-module__nquOPW__text"
-                              style={{ display: 'inline-block', transform: 'none' }}
-                            >
-                              How I work
-                            </span>
-                          </div>
-                          <div
-                            className="style-module-scss-module__nquOPW__iconWrapper"
-                            style={{ transform: 'none' }}
-                          >
-                            <div
-                              className="style-module-scss-module__nquOPW__iconContainer"
-                              style={{ transform: 'none' }}
-                            >
-                              <img
-                                alt="Arrow Right Icon"
-                                loading="lazy"
-                                width={16}
-                                height={16}
-                                decoding="async"
-                                data-nimg={1}
-                                className="style-module-scss-module__nquOPW__icon"
-                                style={{ color: 'transparent' }}
-                                src="/images/arrows/MainArrowGray.svg"
-                              />
-                            </div>
-                            <div
-                              className="style-module-scss-module__nquOPW__iconContainer"
-                              style={{ transform: 'translateX(-7px) translateY(7px) scale(0)' }}
-                            >
-                              <img
-                                alt="Arrow Right Icon"
-                                loading="lazy"
-                                width={16}
-                                height={16}
-                                decoding="async"
-                                data-nimg={1}
-                                className="style-module-scss-module__nquOPW__icon"
-                                style={{ color: 'transparent' }}
-                                src="/images/arrows/MainArrowGray.svg"
-                              />
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <span className="style-module-scss-module__EDzIIq__cardNumber">05</span>
                 </div>
               </div>
               <div className="style-module-scss-module__rdV7za__end" />

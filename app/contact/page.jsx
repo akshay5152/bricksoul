@@ -1,7 +1,7 @@
 import ContactPageContent from '@/components/pages/contact';
 
 export const metadata = {
-  title: 'chkstepan | Contact',
+  title: 'Brick and Soul | Contact',
   alternates: { canonical: '/contact' },
 };
 

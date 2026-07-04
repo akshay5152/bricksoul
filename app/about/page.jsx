@@ -1,7 +1,7 @@
 import AboutPageContent from '@/components/pages/about';
 
 export const metadata = {
-  title: 'chkstepan | About',
+  title: 'Brick and Soul | About',
   alternates: { canonical: '/about' },
 };
 

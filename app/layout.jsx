@@ -7,26 +7,27 @@ const CSS_FILES = [
   '/css/496e5f483a0c288c.css',
   '/css/bd10f170e509af25.css',
   '/css/0b092717d54c5e40.css',
+  '/css/overrides.css',
 ];
 
 export const metadata = {
-  title: 'chkstepan',
+  title: 'Brick and Soul',
   description:
-    'Creative studio crafting modern websites with clean design, smooth animations, and high-performance development, focused on creating immersive and high-end digital experiences.',
-  metadataBase: new URL('https://chkstepan.vercel.app'),
+    'Architecture and interior design studio creating soulful spaces. We design spaces with soul, where every corner tells a story.',
+  metadataBase: new URL('https://brickandsoul.vercel.app'),
   openGraph: {
-    title: 'chkstepan',
-    siteName: 'chkstepan',
+    title: 'Brick and Soul',
+    siteName: 'Brick and Soul',
     description:
-      'Creative studio crafting modern websites with clean design, smooth animations, and high-performance development, focused on creating immersive and high-end digital experiences.',
+      'Architecture and interior design studio creating soulful spaces. We design spaces with soul, where every corner tells a story.',
     images: ['/images/other/MetaLogo.webp'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'chkstepan',
+    title: 'Brick and Soul',
     description:
-      'Creative studio crafting modern websites with clean design, smooth animations, and high-performance development, focused on creating immersive and high-end digital experiences.',
+      'Architecture and interior design studio creating soulful spaces. We design spaces with soul, where every corner tells a story.',
     images: ['/images/other/MetaLogo.webp'],
   },
   icons: {

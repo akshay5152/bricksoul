@@ -23,7 +23,7 @@ export default function RsorJaContent() {
                 <span className="style-module-scss-module__RsorJa__countSecond">
                   <span className="count-up-text" />
                 </span>
-                + Years of Experience
+                + Years Experience
               </p>
             </div>
             <span
@@ -35,7 +35,7 @@ export default function RsorJaContent() {
                 <span className="style-module-scss-module__RsorJa__countDecimal">
                   <span className="count-up-text" />
                 </span>
-                /100 Average Performance Score
+                % Turnkey
               </p>
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function RsorJaContent() {
                   className="style-module-scss-module__RsorJa__word"
                   style={{ transform: 'translateY(100%)' }}
                 >
-                  I
+                  We
                 </span>
               </div>
               <div className="style-module-scss-module__RsorJa__lineMask">
@@ -54,7 +54,7 @@ export default function RsorJaContent() {
                   className="style-module-scss-module__RsorJa__word"
                   style={{ transform: 'translateY(100%)' }}
                 >
-                  Build
+                  Design
                 </span>
               </div>
               <div className="style-module-scss-module__RsorJa__lineMask">
@@ -62,9 +62,7 @@ export default function RsorJaContent() {
                   className="style-module-scss-module__RsorJa__word"
                   style={{ transform: 'translateY(100%)' }}
                 >
-                  <span>Mo</span>
-                  <span className="style-module-scss-module__RsorJa__fontChange">d</span>
-                  <span>ern</span>
+                  Spaces
                 </span>
               </div>
               <div className="style-module-scss-module__RsorJa__lineMask">
@@ -76,7 +74,7 @@ export default function RsorJaContent() {
                     className="style-module-scss-module__RsorJa__highlight style-module-scss-module__RsorJa__word"
                     style={{ display: 'inline-block' }}
                   >
-                    Websites
+                    Soul
                   </span>
                 </span>
               </div>
@@ -90,7 +88,7 @@ export default function RsorJaContent() {
                     className="style-module-scss-module__RsorJa__subWord"
                     style={{ transform: 'translateY(-100%)' }}
                   >
-                    That
+                    Every
                   </span>
                 </div>
               </div>
@@ -100,7 +98,7 @@ export default function RsorJaContent() {
                     className="style-module-scss-module__RsorJa__subWord style-module-scss-module__RsorJa__fontChange"
                     style={{ transform: 'translateY(-100%)' }}
                   >
-                    Work
+                    Story
                   </span>
                   <span
                     className="style-module-scss-module__RsorJa__underline"
@@ -123,31 +121,28 @@ export default function RsorJaContent() {
               <div className="style-module-scss-module__RsorJa__description">
                 <div className="style-module-scss-module__RsorJa__lineMask">
                   <p style={{ transform: 'translateY(108%)' }}>
-                    I'm a web developer focused on building modern, fast, and
+                    At Brick and Soul, every space holds a story. We design
                   </p>
                 </div>
                 <div className="style-module-scss-module__RsorJa__lineMask">
                   <p style={{ transform: 'translateY(108%)' }}>
-                    reliable websites. I care not only about how a site looks, but
+                    rooms — and the feeling of home. With a decade in
                   </p>
                 </div>
                 <div className="style-module-scss-module__RsorJa__lineMask">
                   <p style={{ transform: 'translateY(108%)' }}>
-                    also about how it performs, scales, and feels for real users. From
+                    architecture and interior design, we craft soulful spaces
                   </p>
                 </div>
                 <div className="style-module-scss-module__RsorJa__lineMask">
                   <p style={{ transform: 'translateY(108%)' }}>
-                    clean code and responsive layouts to performance optimization and
+                    tailored to how you live — like the tea shop you return to
                   </p>
                 </div>
                 <div className="style-module-scss-module__RsorJa__lineMask">
                   <p style={{ transform: 'translateY(108%)' }}>
-                    SEO, I make sure every project is built with attention to detail
+                    for how it feels, not the tea. That&apos;s the soul we build in.
                   </p>
-                </div>
-                <div className="style-module-scss-module__RsorJa__lineMask">
-                  <p style={{ transform: 'translateY(108%)' }}>and long-term quality in mind.</p>
                 </div>
               </div>
               <div>

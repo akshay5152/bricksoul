@@ -185,10 +185,10 @@ export default function Header({ pageId = 'overview' }) {
             <div className="style-module-scss-module__MjpYSW__top">
               <div className="style-module-scss-module__MjpYSW__description">
                 {[
-                  'My work is driven by clarity, performance, and',
-                  'attention to detail. I focus on creating reliable',
-                  'digital experiences that feel simple,',
-                  'fast, and intentional.',
+                  'Every space holds a story waiting to be told.',
+                  'We design rooms — and the feeling of coming home.',
+                  'A decade of architecture and interior design,',
+                  'tailored to how you live and work.',
                 ].map((line) => (
                   <div key={line} className="style-module-scss-module__MjpYSW__lineMask">
                     <p style={{ transform: 'translateY(106%)' }}>{line}</p>
@@ -201,13 +201,13 @@ export default function Header({ pageId = 'overview' }) {
                     <div className="style-module-scss-module__jMWBMW__lineMask">
                       <div style={{ transform: 'translateY(106%)' }}>
                         <a
-                          href="mailto:chkstepan11@gmail.com"
+                          href="mailto:Bricknsoul@gamil.com"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="style-module-scss-module__jMWBMW__link "
                         >
                           <span className="style-module-scss-module__jMWBMW__linkText style-module-scss-module__jMWBMW__linkTextBottom">
-                            chkstepan11@gmail.com
+                            Bricknsoul@gamil.com
                           </span>
                         </a>
                       </div>
@@ -218,15 +218,13 @@ export default function Header({ pageId = 'overview' }) {
                       className="style-module-scss-module__MjpYSW__location"
                       style={{ transform: 'translateY(106%)' }}
                     >
-                      Europe, Romania
+                      India
                     </p>
                   </div>
                 </div>
                 <div className="style-module-scss-module__MjpYSW__col style-module-scss-module__MjpYSW__colRight">
                   {[
-                    ['https://www.instagram.com/chkstepan.dev', 'instagram', true],
-                    ['https://www.linkedin.com/company/chkstepan', 'linkedin', false],
-                    ['https://dribbble.com/chkstepan', 'dribbble', false],
+                    ['https://www.instagram.com/brick_n_soul/', 'instagram', true],
                   ].map(([href, label, bottom]) => (
                     <div key={href}>
                       <div className="style-module-scss-module__jMWBMW__lineMask">

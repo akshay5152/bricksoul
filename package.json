@@ -1,5 +1,7 @@
 {
-  "dependencies": {
-    "puppeteer": "^25.3.0"
+  "name": "chkstepan-clone",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
   }
 }

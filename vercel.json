@@ -1,7 +1,4 @@
 {
-  "framework": null,
-  "installCommand": "echo 'Skipping install'",
-  "buildCommand": "mkdir -p dist && cp -R index.html about.html projects.html contact.html favicon.ico icon.png apple-icon.png css fonts images videos chunks js dist/",
-  "outputDirectory": "dist",
-  "cleanUrls": true
+  "version": 2,
+  "framework": "nextjs"
 }

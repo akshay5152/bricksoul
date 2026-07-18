@@ -4,7 +4,10 @@ export default function MTgFGaFaqSection() {
   return (
     <>
       <section className="style-module-scss-module__mTgFGa__faqSection">
-        <div className="style-module-scss-module__mTgFGa__faqPanel">
+        <div
+          className="style-module-scss-module__mTgFGa__faqPanel"
+          style={{ transform: 'translateX(100%)' }}
+        >
           <div className="style-module-scss-module__TcbHra__backgroundStripes  style-module-scss-module__TcbHra__darkTheme">
             <div
               className="style-module-scss-module__TcbHra__stripe"

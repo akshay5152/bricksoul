@@ -2,7 +2,10 @@ export default function GDoBsaVisionSection() {
   return (
     <>
       <section className="style-module-scss-module__gDoBsa__visionSection">
-        <div className="style-module-scss-module__gDoBsa__visionPanel">
+        <div
+          className="style-module-scss-module__gDoBsa__visionPanel"
+          style={{ transform: 'translateX(100%)' }}
+        >
           <div
             style={{
               display: 'none',

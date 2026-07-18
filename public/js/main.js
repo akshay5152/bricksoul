@@ -10,11 +10,31 @@
     }
   };
 
+  // Prevent browser restoring mid-page scroll (FAQ flash) on about reload/back
+  if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.__chkstepanScrollToTop();
+
   window.__chkstepanCleanup = function () {
     try {
       if (window.__chkstepanPreloaderInterval) {
         clearInterval(window.__chkstepanPreloaderInterval);
         window.__chkstepanPreloaderInterval = null;
+      }
+      if (window.__chkstepanBootCleanups && window.__chkstepanBootCleanups.length) {
+        window.__chkstepanBootCleanups.forEach(function (fn) {
+          try {
+            fn();
+          } catch (e) {}
+        });
+        window.__chkstepanBootCleanups = [];
+      }
+      if (window.__chkstepanRafIds && window.__chkstepanRafIds.length) {
+        window.__chkstepanRafIds.forEach(function (id) {
+          cancelAnimationFrame(id);
+        });
+        window.__chkstepanRafIds = [];
       }
       if (typeof gsap !== 'undefined' && window.__chkstepanLenisTick) {
         gsap.ticker.remove(window.__chkstepanLenisTick);
@@ -25,7 +45,10 @@
         });
       }
       if (typeof gsap !== 'undefined') {
-        gsap.killTweensOf('*');
+        // Avoid killing React-owned hanging card; clear page timeline only
+        gsap.killTweensOf(
+          '.style-module-scss-module__RsorJa__word, .style-module-scss-module__RsorJa__subWord, .style-module-scss-module__i0_1Ga__lineOne, .style-module-scss-module__i0_1Ga__lineTwo, .style-module-scss-module__xxZ7PW__word, .style-module-scss-module__FOyjoq__overlay, .style-module-scss-module__gDoBsa__visionPanel, .style-module-scss-module__mTgFGa__faqPanel, .style-module-scss-module__MjpYSW__menu'
+        );
         gsap.globalTimeline.clear();
       }
       if (window.__chkstepanLenis) {
@@ -38,6 +61,22 @@
     } catch (error) {
       console.warn('chkstepan cleanup failed', error);
     }
+  };
+
+  window.__chkstepanBootCleanups = [];
+  window.__chkstepanRafIds = [];
+  window.__chkstepanTrackCleanup = function (fn) {
+    window.__chkstepanBootCleanups.push(fn);
+  };
+  window.__chkstepanListen = function (el, type, handler, opts) {
+    if (!el) return;
+    el.addEventListener(type, handler, opts);
+    window.__chkstepanTrackCleanup(function () {
+      el.removeEventListener(type, handler, opts);
+    });
+  };
+  window.__chkstepanTrackRaf = function (id) {
+    window.__chkstepanRafIds.push(id);
   };
 
   // Report errors back to server for debugging
@@ -88,10 +127,13 @@
     '.style-module-scss-module__UBLvha__cards .style-module-scss-module__UBLvha__card:nth-child(2){z-index:2!important}',
     '.style-module-scss-module__UBLvha__cards .style-module-scss-module__UBLvha__card:nth-child(3){z-index:3!important}',
     // MENU HOVER MARQUEE ANIMATION
+    // Keep the <a> as the full-row hit target; only the inner label slides away visually.
     '@keyframes chkMenuMq{from{transform:translate3d(0,0,0)}to{transform:translate3d(-25%,0,0)}}',
     '.style-module-scss-module__e43Opa__marqueeInner{animation:chkMenuMq 14s linear infinite!important}',
-    '.style-module-scss-module__e43Opa__marquee{transition:transform .5s cubic-bezier(.16,1,.3,1)!important;transform:translateY(101%)!important}',
-    '.style-module-scss-module__e43Opa__textMask > div{transition:transform .5s cubic-bezier(.16,1,.3,1)!important}',
+    '.style-module-scss-module__e43Opa__menuItemLink{position:absolute!important;inset:0!important;z-index:2!important;display:block!important;width:100%!important;height:100%!important;padding:0!important;user-select:text!important;-webkit-user-select:text!important}',
+    '.style-module-scss-module__e43Opa__menuItemLabel{user-select:text!important;-webkit-user-select:text!important}',
+    '.style-module-scss-module__e43Opa__marquee{transition:transform .5s cubic-bezier(.16,1,.3,1)!important;transform:translateY(101%)!important;pointer-events:none!important;user-select:none!important;-webkit-user-select:none!important}',
+    '.style-module-scss-module__e43Opa__textMask > div{transition:transform .5s cubic-bezier(.16,1,.3,1)!important;user-select:text!important;-webkit-user-select:text!important}',
     '.style-module-scss-module__e43Opa__menuItem:hover .style-module-scss-module__e43Opa__marquee{transform:translateY(0%)!important}',
     '.style-module-scss-module__e43Opa__menuItem:hover .style-module-scss-module__e43Opa__textMask > div{transform:translateY(-100%)!important}',
     // Projects page: hide hero words before animation
@@ -123,7 +165,9 @@
     '.style-module-scss-module__gDoBsa__description{transform:translateY(108%)}',
     '.style-module-scss-module__gDoBsa__line{transform:scaleX(0);transform-origin:left}',
     '.style-module-scss-module__gDoBsa__mainDescription{transform:translateY(108%)}',
-    '.style-module-scss-module__mTgFGa__faqPanel{pointer-events:none!important}',
+    // FAQ fixed panel must start off-screen or it covers the about hero on load/nav
+    '.style-module-scss-module__mTgFGa__faqPanel{transform:translateX(100%);pointer-events:none!important}',
+    '@media (max-width:1000px){.style-module-scss-module__mTgFGa__faqPanel{transform:none;pointer-events:auto!important}}',
     '.style-module-scss-module__mTgFGa__accordionTrigger{pointer-events:auto!important}',
     '.style-module-scss-module__mTgFGa__titleLink{pointer-events:auto!important}',
     '.style-module-scss-module__FOyjoq__topTitle{transform:translateY(118%)}',
@@ -345,6 +389,8 @@
         grayBg.style.transform = 'translateY(-101%)';
       }
       preloaderDone = true;
+      // Drop stale queued callbacks from a previous page; new boot() will re-queue or run immediately
+      afterPreloaderQueue = [];
     };
   })();
 
@@ -633,9 +679,14 @@
 
         ctx.stroke();
         frameId = requestAnimationFrame(render);
+        window.__chkstepanTrackRaf(frameId);
       }
 
       frameId = requestAnimationFrame(render);
+      window.__chkstepanTrackRaf(frameId);
+      window.__chkstepanTrackCleanup(function () {
+        cancelAnimationFrame(frameId);
+      });
     })();
 
     /* ─── Menu toggle ────────────────────────────────────────────────────── */
@@ -644,13 +695,26 @@
       var menu = $('.style-module-scss-module__MjpYSW__menu');
       if (!btn || !menu) return;
       menu.style.pointerEvents = 'none';
+      btn.classList.remove('style-module-scss-module__MjpYSW__opened');
+      menu.classList.remove('style-module-scss-module__MjpYSW__opened');
+      document.body.style.overflow = '';
+
       var navDivs   = $$('.style-module-scss-module__e43Opa__textMask > div');
       var descLines = Array.from(menu.querySelectorAll('.style-module-scss-module__MjpYSW__description .style-module-scss-module__MjpYSW__lineMask p'));
       var metaLines = Array.from(menu.querySelectorAll('.style-module-scss-module__jMWBMW__lineMask > div,.style-module-scss-module__MjpYSW__bottom .style-module-scss-module__MjpYSW__lineMask p,.style-module-scss-module__MjpYSW__col .style-module-scss-module__MjpYSW__lineMask p'));
       g.set(navDivs, { y: '100%', scale: 0.8, rotateX: 12, transformOrigin: 'bottom center' });
       g.set(descLines, { y: '106%', scale: 1.15, transformOrigin: 'bottom left' });
       g.set(metaLines, { y: '106%' });
-      btn.addEventListener('click', function () {
+
+      function onMenuClick() {
+        btn = document.querySelector('.style-module-scss-module__MjpYSW__menuToggle') || btn;
+        menu = document.querySelector('.style-module-scss-module__MjpYSW__menu') || menu;
+        if (!btn || !menu) return;
+
+        navDivs   = Array.from(document.querySelectorAll('.style-module-scss-module__e43Opa__textMask > div'));
+        descLines = Array.from(menu.querySelectorAll('.style-module-scss-module__MjpYSW__description .style-module-scss-module__MjpYSW__lineMask p'));
+        metaLines = Array.from(menu.querySelectorAll('.style-module-scss-module__jMWBMW__lineMask > div,.style-module-scss-module__MjpYSW__bottom .style-module-scss-module__MjpYSW__lineMask p,.style-module-scss-module__MjpYSW__col .style-module-scss-module__MjpYSW__lineMask p'));
+
         var open = btn.classList.toggle('style-module-scss-module__MjpYSW__opened');
         menu.classList.toggle('style-module-scss-module__MjpYSW__opened', open);
         document.body.style.overflow = open ? 'hidden' : '';
@@ -669,7 +733,9 @@
           g.set(descLines, { y:'106%',scale:1.15,delay:0.7 });
           g.set(metaLines, { y:'106%',delay:0.7 });
         }
-      });
+      }
+
+      window.__chkstepanListen(btn, 'click', onMenuClick);
     })();
 
     /* ─── Project hover image preview ────────────────────────────────────── */
@@ -702,172 +768,19 @@
         '<span style="font-family:Dirtyline,sans-serif;font-size:2.6rem;color:#fdfdfd;padding-right:48px">Be ✱ Creative ✱ With ✱ Me ✱ Be ✱ Creative ✱ With ✱ Me ✱ Be ✱ Creative ✱ With ✱ Me ✱ </span></div></div>';
     })();
 
-    /* ─── Draggable and Interactive lanyard badge (About page) ─────────────── */
-    (function () {
-      var wrap = $('.style-module-scss-module__-80N3q__lanyardWrapper');
-      if (!wrap) return;
-
-      // Render official pink strap and card
-      wrap.innerHTML =
-        '<style>' +
-        '#lanyard-fallback-container { position:absolute; left: 50%; transform: translateX(-50%); top: -20px; pointer-events: auto; display: flex; flex-direction: column; align-items: center; z-index: 10; }' +
-        '@media (max-width: 1024px) { #lanyard-fallback-container { left: 50%; transform: translateX(-50%) scale(0.85); top: -40px; } }' +
-        '@media (max-width: 768px) { #lanyard-fallback-container { left: 50%; transform: translateX(-50%) scale(0.65); top: -60px; } }' +
-        '@media (max-width: 480px) { #lanyard-fallback-container { display: none; } }' +
-        '</style>' +
-        '<div id="lanyard-fallback-container" style="opacity:0">' +
-          // Lanyard strap (outer wrapper)
-          '<div id="lanyard-strap" style="width:18px;height:130px;transform-origin:top center;background:repeating-linear-gradient(45deg, #df7097, #df7097 8px, #fdfdfd 8px, #fdfdfd 16px);border-radius:0 0 2px 2px;box-shadow:0 10px 20px rgba(0,0,0,0.15);will-change:transform;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">' +
-            // Black loop connector (child of strap)
-            '<div style="width:6px;height:12px;background:#18181c;margin-bottom:-6px;border-radius:2px;position:relative;z-index:2"></div>' +
-            // Silver hook ring (child of strap)
-            '<div id="lanyard-hook" style="width:14px;height:14px;border:2px solid #52525e;border-radius:50%;margin-bottom:-12px;position:relative;z-index:2">' +
-              // Card container (nested child of hook ring so it never detaches!)
-              '<div id="badge-card" style="width:200px;height:300px;position:absolute;top:10px;left:-93px;cursor:grab;background:#df7097;border:1px solid rgba(253,253,253,0.15);border-radius:12px;padding:26px 18px;box-sizing:border-box;box-shadow:0 35px 70px rgba(223,112,151,0.32), 0 12px 30px rgba(0,0,0,0.25);will-change:transform;user-select:none;transform-style:preserve-3d;perspective:800px;transform-origin:top center">' +
-                // Inner content
-                '<div style="font-family:Thunder-LC,sans-serif;font-size:2.35rem;font-weight:900;color:#fdfdfd;line-height:0.9;text-transform:uppercase;text-align:left;letter-spacing:-0.01em;transform:translateZ(10px)">' +
-                  'I Build<br>What You<br>Can\'t<br>Imagine' +
-                '</div>' +
-                '<div style="font-family:Nohemi,sans-serif;font-size:0.5rem;font-weight:300;color:rgba(253,253,253,0.85);text-align:left;line-height:1.45;margin-top:16px;letter-spacing:0.01em;transform:translateZ(5px)">' +
-                  'Turning complex ideas into seamless digital products, built with precision, motion, and modern tools.' +
-                '</div>' +
-                // Sticker logo bottom-right
-                '<div style="position:absolute;bottom:18px;right:18px;width:38px;height:38px;background:#fdfdfd;border-radius:4px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,0.18);transform:translateZ(12px)">' +
-                  '<img src="/images/brand/LogoDark.svg" style="width:23px;height:23px" draggable="false"/>' +
-                '</div>' +
-                // Left-bottom web URL
-                '<div style="position:absolute;bottom:18px;left:18px;font-family:Nohemi,sans-serif;font-size:0.42rem;color:rgba(253,253,253,0.5);letter-spacing:0.04em;text-transform:lowercase;transform:translateZ(5px)">' +
-                  'about' +
-                '</div>' +
-                // Glassmorphism shine overlay
-                '<div style="position:absolute;inset:0;border-radius:12px;background:linear-gradient(135deg, rgba(253,253,253,0.15) 0%, rgba(253,253,253,0) 50%, rgba(0,0,0,0.08) 100%);pointer-events:none;transform:translateZ(1px)"></div>' +
-              '</div>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
-
-      var container = wrap.querySelector('#lanyard-fallback-container');
-      var card = wrap.querySelector('#badge-card');
-      var strap = wrap.querySelector('#lanyard-strap');
-      if (!container || !card || !strap) return; // Safety guard
-      var dragging = false;
-      var idleTween = null;
-
-      // Gentle idle swing
-      function startIdle() {
-        if (idleTween) idleTween.kill();
-        idleTween = g.to(strap, {
-          rotation: 3,
-          duration: 2.2,
-          yoyo: true,
-          repeat: -1,
-          ease: 'sine.inOut',
-          onUpdate: function () {
-            var currAngle = g.getProperty(strap, 'rotation');
-            g.set(card, { rotateY: currAngle * 0.5, rotateX: -currAngle * 0.3, scaleY: 1 });
-          }
-        });
-      }
-
-      // Springy drop-in when preloader finishes sliding up
-      afterPreloaderQueue.push(function () {
-        g.fromTo(container,
-          { y: -650, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1.8, ease: 'bounce.out', delay: 0.1, onComplete: startIdle }
-        );
-      });
-
-      card.addEventListener('mousedown', function (e) {
-        dragging = true;
-        if (idleTween) idleTween.kill();
-        g.killTweensOf([card, strap]);
-        card.style.cursor = 'grabbing';
-      });
-
-      // Mouse interactive swing and vertical stretch/squash (top-to-bottom motion)
-      document.addEventListener('mousemove', function (e) {
-        var rect = container.getBoundingClientRect();
-        var originX = rect.left + rect.width / 2;
-        var originY = rect.top; // anchor point
-
-        var dx = e.clientX - originX;
-        var dy = e.clientY - originY;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dragging) {
-          var angle = Math.atan2(dx, dy) * (180 / Math.PI);
-          angle = Math.max(-50, Math.min(50, angle)); // Limit angle
-          
-          var scaleY = Math.max(0.6, Math.min(1.4, dist / 130));
-
-          g.set(strap, { rotation: angle, scaleY: scaleY });
-          g.set(card, { rotateY: angle * 0.6, rotateX: -angle * 0.4, scaleY: 1 / scaleY });
-        } else {
-          if (dist < 450) {
-            if (idleTween) idleTween.pause();
-            var factor = (1 - dist / 450);
-            var angle = Math.atan2(dx, dy) * (180 / Math.PI);
-            angle = Math.max(-32, Math.min(32, angle)) * factor;
-
-            var targetScaleY = 1 + (dy / dist) * factor * 0.16; // up to 16% vertical bounce
-            targetScaleY = Math.max(0.8, Math.min(1.2, targetScaleY));
-
-            g.to(strap, { rotation: angle, scaleY: targetScaleY, duration: 0.75, ease: 'power2.out', overwrite: 'auto' });
-            g.to(card, {
-              rotateY: angle * 0.6,
-              rotateX: -angle * 0.4,
-              scaleY: 1 / targetScaleY,
-              duration: 0.75,
-              ease: 'power2.out',
-              overwrite: 'auto'
-            });
-          } else {
-            if (idleTween && idleTween.paused()) {
-              g.to(strap, { rotation: 0, scaleY: 1, duration: 1.1, ease: 'power2.out' });
-              g.to(card, {
-                rotateX: 0,
-                rotateY: 0,
-                scaleY: 1,
-                duration: 1.1,
-                ease: 'power2.out',
-                onComplete: function () {
-                  if (idleTween) idleTween.resume();
-                }
-              });
-            }
-          }
-        }
-      });
-
-      document.addEventListener('mouseup', function () {
-        if (!dragging) return;
-        dragging = false;
-        card.style.cursor = 'grab';
-
-        g.to(strap, {
-          rotation: 0,
-          scaleY: 1,
-          duration: 1.5,
-          ease: 'elastic.out(1, 0.45)',
-          onUpdate: function () {
-            var currAngle = g.getProperty(strap, 'rotation');
-            var currScaleY = g.getProperty(strap, 'scaleY');
-            g.set(card, { rotateY: currAngle * 0.5, rotateX: -currAngle * 0.3, scaleY: 1 / currScaleY });
-          },
-          onComplete: startIdle
-        });
-      });
-    })();
+    /* Lanyard ID card animation is handled by React LanyardWrapper (gsap) */
 
     /* ─── About page: FAQ Accordion click handler ───────────────────────── */
     (function () {
       var triggers = $$('.style-module-scss-module__mTgFGa__accordionTrigger');
       triggers.forEach(function (trigger) {
-        trigger.addEventListener('click', function () {
+        window.__chkstepanListen(trigger, 'click', function () {
+          var liveTriggers = Array.from(
+            document.querySelectorAll('.style-module-scss-module__mTgFGa__accordionTrigger')
+          );
           var isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-          
-          // Collapse all other accordion items (live website allows multiple or single? Let's do single to be super clean)
-          triggers.forEach(function (t) {
+
+          liveTriggers.forEach(function (t) {
             if (t !== trigger) {
               t.setAttribute('aria-expanded', 'false');
               var body = t.nextElementSibling;
@@ -877,7 +790,6 @@
             }
           });
 
-          // Toggle current
           trigger.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
           var currentBody = trigger.nextElementSibling;
           if (currentBody) {
@@ -896,7 +808,14 @@
       var visual = $('.style-module-scss-module__IGrPbq__contactVisual');
       if (!visual) return;
 
-      // The live site has 5 logo versions orbiting. Recreate them.
+      // Stop any previous orbit loop from an earlier SPA boot
+      if (visual.__orbitStop) {
+        try {
+          visual.__orbitStop();
+        } catch (err) {}
+        visual.__orbitStop = null;
+      }
+
       var logoUrls = [
         '/images/contactLogos/LogoV1Contact.webp',
         '/images/contactLogos/LogoV2Contact.webp',
@@ -905,70 +824,136 @@
         '/images/contactLogos/LogoV5Contact.webp'
       ];
 
-      // Remove the existing single icon
       visual.innerHTML = '';
 
-      // Create orbit container
-      var orbitContainer = document.createElement('div');
-      orbitContainer.style.cssText = 'position:relative;width:clamp(3rem,2.706rem+1.47vw,5rem);height:clamp(3rem,2.706rem+1.47vw,5rem)';
-
-      var iconSize = 'clamp(3rem,2.706rem+1.47vw,5rem)';
-      var orbitRadius = 140; // px from center
+      var orbitRadius = Math.min(160, Math.max(100, window.innerWidth * 0.09));
       var icons = [];
+      var alive = true;
+      var rafId = 0;
 
       logoUrls.forEach(function (url, i) {
-        var wrapper = document.createElement('div');
         var angle = (i / logoUrls.length) * Math.PI * 2;
-        var ox = Math.cos(angle) * orbitRadius;
-        var oy = Math.sin(angle) * orbitRadius;
+
+        // Outer: opacity / entrance only (safe for GSAP)
+        var wrapper = document.createElement('div');
         wrapper.className = 'style-module-scss-module__IGrPbq__contactIcon';
-        wrapper.style.cssText = 'position:absolute;width:clamp(3rem,2.706rem+1.47vw,5rem);height:clamp(3rem,2.706rem+1.47vw,5rem);top:50%;left:50%;transform:translate(calc(-50% + ' + ox + 'px), calc(-50% + ' + oy + 'px));opacity:0';
+        wrapper.style.cssText =
+          'position:absolute;top:50%;left:50%;width:clamp(3rem,2.706rem + 1.47vw,5rem);height:clamp(3rem,2.706rem + 1.47vw,5rem);opacity:0;pointer-events:none;will-change:transform';
+
+        // Mid: orbital position (owned by rAF — never tweened by GSAP)
+        var orbitPos = document.createElement('div');
+        orbitPos.className = 'contact-orbit-pos';
+        orbitPos.style.cssText =
+          'position:absolute;inset:0;transform:translate(-50%, -50%);will-change:transform';
+
+        // Inner: self-spin of the logo coin
+        var spin = document.createElement('div');
+        spin.className = 'contact-orbit-spin';
+        spin.style.cssText =
+          'position:absolute;inset:0;will-change:transform';
 
         var img = document.createElement('img');
         img.src = url;
         img.alt = 'Logo 3D';
-        img.style.cssText = 'position:absolute;width:100%;height:100%;object-fit:contain;top:0;left:0';
-        wrapper.appendChild(img);
+        img.draggable = false;
+        img.style.cssText =
+          'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block';
+
+        spin.appendChild(img);
+        orbitPos.appendChild(spin);
+        wrapper.appendChild(orbitPos);
         visual.appendChild(wrapper);
-        icons.push({ el: wrapper, baseAngle: angle, ox: ox, oy: oy });
+
+        icons.push({
+          el: wrapper,
+          pos: orbitPos,
+          spin: spin,
+          baseAngle: angle
+        });
       });
 
-      // Animate icons in after preloader
+      function runWhenReady(fn) {
+        if (preloaderDone) fn();
+        else afterPreloaderQueue.push(fn);
+      }
+
       function animateIn() {
+        if (!alive || !document.contains(visual)) return;
+
         icons.forEach(function (icon, i) {
-          g.to(icon.el, {
-            opacity: 1,
-            duration: 1,
-            ease: 'power3.out',
-            delay: 0.4 + i * 0.08
-          });
+          g.fromTo(
+            icon.el,
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 1,
+              ease: 'power3.out',
+              delay: 0.35 + i * 0.08,
+              overwrite: true
+            }
+          );
         });
 
-        // Continuous slow orbit rotation
         var orbitAngle = 0;
-        var mouseX = 0, mouseY = 0;
-        var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+        var mouseX = window.innerWidth / 2;
+        var mouseY = window.innerHeight / 2;
+        var cx = window.innerWidth / 2;
+        var cy = window.innerHeight / 2;
 
-        function orbitFrame() {
-          orbitAngle += 0.003;
-          icons.forEach(function (icon, i) {
-            var a = icon.baseAngle + orbitAngle;
-            var r = orbitRadius + Math.sin(orbitAngle * 2 + i) * 12;
-            var ox = Math.cos(a) * r + (mouseX - cx) * 0.04;
-            var oy = Math.sin(a) * r + (mouseY - cy) * 0.04;
-            icon.el.style.transform = 'translate(calc(-50% + ' + ox + 'px), calc(-50% + ' + oy + 'px))';
-          });
-          requestAnimationFrame(orbitFrame);
+        function onResize() {
+          cx = window.innerWidth / 2;
+          cy = window.innerHeight / 2;
+          orbitRadius = Math.min(160, Math.max(100, window.innerWidth * 0.09));
         }
-        requestAnimationFrame(orbitFrame);
 
-        document.addEventListener('mousemove', function (e) {
+        function onMove(e) {
           mouseX = e.clientX;
           mouseY = e.clientY;
+        }
+
+        function orbitFrame() {
+          if (!alive) return;
+
+          orbitAngle += 0.018;
+
+          icons.forEach(function (icon, i) {
+            var a = icon.baseAngle + orbitAngle;
+            var r = orbitRadius + Math.sin(orbitAngle * 2 + i) * 14;
+            var ox = Math.cos(a) * r + (mouseX - cx) * 0.035;
+            var oy = Math.sin(a) * r + (mouseY - cy) * 0.035;
+            // Depth cue: keep logos clearly visible (never shrink too small)
+            var depth = 0.92 + ((Math.sin(a) + 1) / 2) * 0.18;
+
+            icon.pos.style.transform =
+              'translate(calc(-50% + ' + ox + 'px), calc(-50% + ' + oy + 'px)) scale(' + depth + ')';
+            // Keep coins facing the viewer — tilt/wobble only, never full flip-hide
+            var tiltY = Math.sin(orbitAngle * 1.5 + i) * 28;
+            var tiltZ = orbitAngle * 28 + i * 18;
+            icon.spin.style.transform =
+              'rotateZ(' + tiltZ + 'deg) rotateY(' + tiltY + 'deg)';
+          });
+
+          rafId = requestAnimationFrame(orbitFrame);
+          window.__chkstepanTrackRaf(rafId);
+        }
+
+        window.__chkstepanListen(window, 'resize', onResize);
+        window.__chkstepanListen(document, 'mousemove', onMove, { passive: true });
+        rafId = requestAnimationFrame(orbitFrame);
+        window.__chkstepanTrackRaf(rafId);
+
+        visual.__orbitStop = function () {
+          alive = false;
+          cancelAnimationFrame(rafId);
+        };
+        window.__chkstepanTrackCleanup(function () {
+          alive = false;
+          cancelAnimationFrame(rafId);
+          visual.__orbitStop = null;
         });
       }
 
-      afterPreloaderQueue.push(animateIn);
+      runWhenReady(animateIn);
     })();
 
     /* ─── Pinned card stack (Strategy section) ─────────────────────────── */
@@ -1056,8 +1041,8 @@
       }
 
       // Sync updating with scroll event
-      window.addEventListener('scroll', updateCardStack);
-      window.addEventListener('resize', updateCardStack);
+      window.__chkstepanListen(window, 'scroll', updateCardStack);
+      window.__chkstepanListen(window, 'resize', updateCardStack);
       
       // Initial trigger
       setTimeout(updateCardStack, 100);
@@ -1154,9 +1139,13 @@
           g.to('.style-module-scss-module__IGrPbq__metaInner', { y:'0%',duration:0.8,ease:'power3.out',stagger:0.05,delay:0.5 });
           // Pulse scale
           g.to('.style-module-scss-module__IGrPbq__pulse', { scale:1,duration:1,ease:'back.out(2)',delay:0.6 });
-          // Contact icon drops in
+          // Contact icons fade in only (orbit/spin is owned by rAF, not GSAP transform)
           g.to('.style-module-scss-module__IGrPbq__contactIcon', {
-            opacity:1,y:0,scale:1,rotation:0,duration:1.4,ease:'back.out(1.2)',delay:0.4
+            opacity: 1,
+            duration: 1.2,
+            ease: 'power3.out',
+            stagger: 0.08,
+            delay: 0.35
           });
           // Contact info rows slide in
           g.to('.style-module-scss-module__IGrPbq__cellMask p, .style-module-scss-module__IGrPbq__cellMask a', {
@@ -1382,11 +1371,12 @@
           var image = card.querySelector('.style-module-scss-module__UBLvha__image');
           var title = card.querySelector('.style-module-scss-module__UBLvha__title');
           var btn = card.querySelector('.style-module-scss-module__dZgGeG__button');
+          var imageWrap = card.querySelector('.style-module-scss-module__UBLvha__cardImage');
 
           // Initialize states
           var inner = card.querySelector('.style-module-scss-module__UBLvha__cardInner');
           if (inner) {
-            g.set(inner, { rotation: 3 });
+            g.set(inner, { rotation: 3, force3D: true });
             g.to(inner, {
               rotation: 0,
               ease: 'none',
@@ -1394,7 +1384,9 @@
                 trigger: card,
                 start: 'top bottom',
                 end: 'bottom bottom',
-                scrub: true
+                // Keep tight to scroll so text+image don't lag behind the slide
+                scrub: 0.15,
+                invalidateOnRefresh: true
               }
             });
           }
@@ -1403,10 +1395,38 @@
           if (label) g.set(label, { y: '100%' });
           if (title) g.set(title, { y: '108%' });
           if (btn) g.set(btn, { opacity: 0, y: 30 });
-          
+
+          // Image must scrub with the card (not a delayed once-tween) or it trails the slide
           if (image) {
             var isEng = card.classList.contains('style-module-scss-module__UBLvha__engineeringCard');
-            g.set(image, { y: isEng ? '-108%' : '122%' });
+            g.set(image, { y: isEng ? '-55%' : '55%', force3D: true });
+            g.to(image, {
+              y: '0%',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 90%',
+                end: 'top 40%',
+                scrub: 0.15,
+                invalidateOnRefresh: true
+              }
+            });
+          }
+          if (label) {
+            g.to(label, {
+              y: '0%',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                end: 'top 45%',
+                scrub: 0.15,
+                invalidateOnRefresh: true
+              }
+            });
+          }
+          if (imageWrap) {
+            g.set(imageWrap, { force3D: true });
           }
 
           // Trigger title/desc/separator animations
@@ -1421,20 +1441,6 @@
             }
           });
 
-          // Trigger image slide animation (matches React trigger start bounds)
-          if (image) {
-            var isEng = card.classList.contains('style-module-scss-module__UBLvha__engineeringCard');
-            ScrollTrigger.create({
-              trigger: isEng ? card : image,
-              start: isEng ? 'top 75%' : 'top 95%',
-              once: true,
-              onEnter: function () {
-                g.to(image, { y: '0%', duration: 0.75, ease: 'power3.out' });
-                if (label) g.to(label, { y: '0%', duration: 0.8, ease: 'power3.out', delay: 0.2 });
-              }
-            });
-          }
-
           // 2. Scroll pinning stack (for all but the last card)
           if (i < serviceCards.length - 1) {
             ScrollTrigger.create({
@@ -1442,7 +1448,9 @@
               start: 'bottom bottom',
               end: 'bottom top',
               pin: true,
-              pinSpacing: false
+              pinSpacing: false,
+              anticipatePin: 1,
+              invalidateOnRefresh: true
             });
             var overlay = card.querySelector('.style-module-scss-module__UBLvha__cardOverlay');
             if (overlay) {
@@ -1454,7 +1462,8 @@
                   trigger: card,
                   start: 'bottom bottom',
                   end: 'bottom top',
-                  scrub: true
+                  scrub: 0.15,
+                  invalidateOnRefresh: true
                 }
               });
             }
@@ -1546,8 +1555,8 @@
 
               if (d > 0.85 && !titleAnimated) {
                 titleAnimated = true;
-                g.to('.style-module-scss-module__FOyjoq__dPinkCircle', { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.7, ease: 'power3.out', delay: 0.1, overwrite: true });
-                g.to('.style-module-scss-module__FOyjoq__lPinkCircle', { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.7, ease: 'power3.out', delay: 0.18, overwrite: true });
+                g.to('.style-module-scss-module__FOyjoq__dPinkCircle', { opacity: 0.42, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.7, ease: 'power3.out', delay: 0.1, overwrite: true });
+                g.to('.style-module-scss-module__FOyjoq__lPinkCircle', { opacity: 0.38, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.7, ease: 'power3.out', delay: 0.18, overwrite: true });
                 g.to('.style-module-scss-module__FOyjoq__animTitle', { opacity: 1, rotate: 0, x: 0, y: '0%', duration: 0.6, ease: 'power3.out', stagger: 0.08, delay: 0.1, overwrite: true });
                 g.to('.style-module-scss-module__FOyjoq__descLine', { opacity: 1, y: '0%', duration: 0.6, ease: 'power3.out', stagger: 0.08, delay: 0.1, overwrite: true });
                 g.to('.style-module-scss-module__FOyjoq__topTitle, .style-module-scss-module__FOyjoq__bottomTitle', { y: '0%', duration: 0.8, ease: 'power3.out', overwrite: true });
@@ -1791,8 +1800,8 @@
             var progress = Math.min(Math.max((viewHeight - rect.top) / range, 0), 1);
             overlay.style.opacity = String(1 - progress);
           }
-          window.addEventListener('scroll', updateFooterOverlay, { passive: true });
-          window.addEventListener('resize', updateFooterOverlay);
+          window.__chkstepanListen(window, 'scroll', updateFooterOverlay, { passive: true });
+          window.__chkstepanListen(window, 'resize', updateFooterOverlay);
           updateFooterOverlay();
 
           // 2. Explosion particles
@@ -1913,7 +1922,7 @@
       }
     });
 
-    window.__chkstepanRestart = function () {
+    window.__chkstepanRestart = function (pageId) {
       if (typeof window.__chkstepanDismissPreloader === 'function') {
         window.__chkstepanDismissPreloader();
       }
@@ -1929,6 +1938,13 @@
       if (typeof ScrollTrigger !== 'undefined') {
         ScrollTrigger.refresh();
       }
+      try {
+        window.dispatchEvent(
+          new CustomEvent('chkstepan:booted', {
+            detail: { pageId: pageId || null },
+          })
+        );
+      } catch (e) {}
     };
   }
 })();

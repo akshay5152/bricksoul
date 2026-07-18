@@ -46,32 +46,35 @@ function MenuNavItem({ href, label, number, marquee, accentColor, isLast }) {
           style={{ backgroundColor: '#212121' }}
         />
       ) : null}
-      <div className="style-module-scss-module__e43Opa__textMask">
-        <div style={{ transform: 'translateY(100%)' }}>
-          <Link
-            href={href}
-            className="style-module-scss-module__e43Opa__menuItemLink"
-            style={{ color: '#212121' }}
-          >
+      {/* Link wraps the full row so hover/marquee never steals the first click */}
+      <Link
+        href={href}
+        className="style-module-scss-module__e43Opa__menuItemLink"
+        style={{ color: '#212121' }}
+        draggable={false}
+      >
+        <div className="style-module-scss-module__e43Opa__textMask">
+          <div style={{ transform: 'translateY(100%)' }}>
             <span className="style-module-scss-module__e43Opa__numberMask">
               <span className="style-module-scss-module__e43Opa__itemNumber" style={{ opacity: 0 }}>
                 {number}
               </span>
             </span>
-            {label}
-          </Link>
-        </div>
-      </div>
-      <div
-        className="style-module-scss-module__e43Opa__marquee"
-        style={{ backgroundColor: accentColor }}
-      >
-        <div className="style-module-scss-module__e43Opa__marqueeInnerWrap">
-          <div className="style-module-scss-module__e43Opa__marqueeInner" aria-hidden="true">
-            <MarqueeParts text={marquee} />
+            <span className="style-module-scss-module__e43Opa__menuItemLabel">{label}</span>
           </div>
         </div>
-      </div>
+        <div
+          className="style-module-scss-module__e43Opa__marquee"
+          style={{ backgroundColor: accentColor }}
+          aria-hidden="true"
+        >
+          <div className="style-module-scss-module__e43Opa__marqueeInnerWrap">
+            <div className="style-module-scss-module__e43Opa__marqueeInner">
+              <MarqueeParts text={marquee} />
+            </div>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }

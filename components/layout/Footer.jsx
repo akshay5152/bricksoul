@@ -116,17 +116,29 @@ export default function Footer() {
                     className="style-module-scss-module__1eBtna__horizontalLine"
                     style={{ backgroundColor: '#729e84', transform: 'scaleX(0)' }}
                   />
-                  <img
-                    alt="Brick and Soul"
-                    loading="lazy"
-                    width={280}
-                    height={280}
-                    decoding="async"
-                    data-nimg={1}
+                  <svg
                     className="style-module-scss-module__1eBtna__boldTextImage"
-                    style={{ color: 'transparent' }}
-                    src="/images/other/FooterText.svg"
-                  />
+                    viewBox="0 0 1389 360"
+                    width={1389}
+                    height={360}
+                    preserveAspectRatio="xMidYMid meet"
+                    role="img"
+                    aria-label="Brick & Soul"
+                  >
+                    <text
+                      x="0"
+                      y="300"
+                      fill="#FDFDFD"
+                      fontFamily="Thunder-LC, sans-serif"
+                      fontWeight="600"
+                      fontSize="320"
+                      letterSpacing="-0.01em"
+                      textLength="1389"
+                      lengthAdjust="spacing"
+                    >
+                      BRICK &amp; SOUL
+                    </text>
+                  </svg>
                 </div>
               </div>
             </div>

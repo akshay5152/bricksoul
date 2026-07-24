@@ -1,6 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="100%" height="auto">
-  <!-- Stylized footer logo text "chkstepan" in massive font -->
-  <text x="50%" y="150" font-family="'Syne', 'Inter', sans-serif" font-weight="800" font-size="160" fill="none" stroke="rgba(253, 253, 253, 0.04)" stroke-width="2" text-anchor="middle">
-    chkstepan
-  </text>
+<svg width="1389" height="360" viewBox="0 0 1389 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @font-face {
+      font-family: Thunder-LC;
+      src: url(/fonts/Thunder/Thunder-SemiBoldLC.woff2) format("woff2");
+      font-weight: 600;
+      font-style: normal;
+    }
+  </style>
+  <text
+    x="0"
+    y="300"
+    fill="#212121"
+    font-family="Thunder-LC, sans-serif"
+    font-weight="600"
+    font-size="320"
+    letter-spacing="-0.01em"
+    textLength="1389"
+    lengthAdjust="spacing"
+  >BRICK &amp; SOUL</text>
 </svg>

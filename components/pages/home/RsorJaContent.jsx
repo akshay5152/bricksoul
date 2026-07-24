@@ -78,15 +78,11 @@ export default function RsorJaContent() {
                   </span>
                 </span>
               </div>
-            </div>
-          </h1>
-          <h1 className="style-module-scss-module__RsorJa__subTitle">
-            <div className="style-module-scss-module__RsorJa__subTitleBody">
               <div className="style-module-scss-module__RsorJa__lineMask">
                 <div className="style-module-scss-module__RsorJa__wordWrapper">
                   <span
                     className="style-module-scss-module__RsorJa__subWord"
-                    style={{ transform: 'translateY(-100%)' }}
+                    style={{ transform: 'translateY(100%)' }}
                   >
                     Every
                   </span>
@@ -96,7 +92,7 @@ export default function RsorJaContent() {
                 <div className="style-module-scss-module__RsorJa__wordWrapper">
                   <span
                     className="style-module-scss-module__RsorJa__subWord style-module-scss-module__RsorJa__fontChange"
-                    style={{ transform: 'translateY(-100%)' }}
+                    style={{ transform: 'translateY(100%)' }}
                   >
                     Story
                   </span>

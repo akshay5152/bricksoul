@@ -54,70 +54,106 @@
 }
 
 /* -------------------------------------------------------------------------- */
+/* Hero: full-width one-line title — larger type, even gaps across the row    */
+/* WE DESIGN SPACES SOUL EVERY STORY                                          */
+/* -------------------------------------------------------------------------- */
+.style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__body {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: baseline !important;
+  flex-wrap: nowrap !important;
+  /* Small floor gap so words never touch; space-between fills the rest evenly */
+  gap: 0.12em !important;
+  overflow: visible !important;
+  max-width: 100%;
+  width: 100%;
+}
+
+.style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__mainTitle {
+  width: 100%;
+  margin-bottom: 1.35rem !important;
+}
+
+.style-module-scss-module__RsorJa__content
+  .style-module-scss-module__RsorJa__mainTitle
+  .style-module-scss-module__RsorJa__word,
+.style-module-scss-module__RsorJa__content
+  .style-module-scss-module__RsorJa__mainTitle
+  .style-module-scss-module__RsorJa__subWord {
+  /* Big enough to fill the row; space-between keeps even gaps edge-to-edge */
+  font-size: clamp(2.5rem, 8.15vw, 11.5rem) !important;
+  line-height: 0.88 !important;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+  flex: 0 0 auto;
+}
+
+/* Every / Story styles were scoped under .subTitle — re-apply inside .body */
+.style-module-scss-module__RsorJa__content
+  .style-module-scss-module__RsorJa__body
+  .style-module-scss-module__RsorJa__wordWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.style-module-scss-module__RsorJa__content
+  .style-module-scss-module__RsorJa__body
+  .style-module-scss-module__RsorJa__wordWrapper
+  .style-module-scss-module__RsorJa__fontChange {
+  font-family: Thunder-HC;
+}
+
+.style-module-scss-module__RsorJa__content
+  .style-module-scss-module__RsorJa__body
+  .style-module-scss-module__RsorJa__underline {
+  transform-origin: 100%;
+  background-color: #729e84;
+  width: 96.2%;
+  height: clamp(0.1rem, 0.038rem + 0.31vw, 0.525rem);
+  display: block;
+  position: absolute;
+  bottom: clamp(0.1rem, 1.8vw - 0.2rem, 0.45rem);
+  right: 0;
+}
+
+/* -------------------------------------------------------------------------- */
 /* Responsive text alignment — keep copy readable and left-aligned on narrow  */
 /* viewports so right-aligned desktop layouts do not look stuck / clipped.    */
 /* -------------------------------------------------------------------------- */
 
-/* Home hero: at laptop/tablet widths, stop space-between stagger that clips
-   words like "SOUL" and hangs "Every Story" far right. */
+/* Home hero: keep full-width one-liner; scale type down as the viewport shrinks. */
 @media (max-width: 1400px) {
   .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__body {
-    justify-content: flex-start !important;
+    justify-content: space-between !important;
     align-items: baseline !important;
-    flex-wrap: wrap !important;
-    gap: 0.12em 0.4em !important;
+    flex-wrap: nowrap !important;
+    gap: 0.1em !important;
     overflow: visible !important;
     max-width: 100%;
+    width: 100%;
   }
 
   .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__mainTitle {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: 1.1rem !important;
   }
 
   .style-module-scss-module__RsorJa__content
     .style-module-scss-module__RsorJa__mainTitle
     .style-module-scss-module__RsorJa__word,
-  .style-module-scss-module__RsorJa__word {
-    font-size: clamp(2.5rem, 9.5vw, 7rem) !important;
-    line-height: 0.92 !important;
-  }
-
-  .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__subTitle {
-    text-align: left !important;
-    margin-top: 0.1rem !important;
-    margin-right: 0 !important;
-    font-size: clamp(2.5rem, 9.5vw, 7rem) !important;
-  }
-
+  .style-module-scss-module__RsorJa__word,
   .style-module-scss-module__RsorJa__content
-    .style-module-scss-module__RsorJa__subTitle
-    .style-module-scss-module__RsorJa__subTitleBody {
-    justify-content: flex-start !important;
-    align-items: baseline !important;
-    flex-wrap: wrap !important;
-    gap: 0.12em 0.4em !important;
-    overflow: visible !important;
-  }
-
-  .style-module-scss-module__RsorJa__content
-    .style-module-scss-module__RsorJa__subTitle
+    .style-module-scss-module__RsorJa__mainTitle
     .style-module-scss-module__RsorJa__subWord,
   .style-module-scss-module__RsorJa__subWord {
-    font-size: clamp(2.5rem, 9.5vw, 7rem) !important;
-    line-height: 0.92 !important;
+    font-size: clamp(2.15rem, 8.4vw, 9rem) !important;
+    line-height: 0.88 !important;
   }
 
   .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__stats {
-    flex-wrap: wrap !important;
-    justify-content: flex-start !important;
-    gap: 0.5rem 1.25rem !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
     margin-bottom: 0.75rem !important;
-  }
-
-  .style-module-scss-module__RsorJa__content
-    .style-module-scss-module__RsorJa__stats
-    .style-module-scss-module__RsorJa__line {
-    display: none !important;
   }
 
   .style-module-scss-module__RsorJa__content
@@ -138,10 +174,6 @@
     width: min(100%, 32.5rem) !important;
   }
 
-  .style-module-scss-module__RsorJa__subTitleBody {
-    overflow: visible !important;
-  }
-
   .style-module-scss-module__RsorJa__body {
     overflow: visible !important;
   }
@@ -153,11 +185,14 @@
     .style-module-scss-module__RsorJa__word,
   .style-module-scss-module__RsorJa__word,
   .style-module-scss-module__RsorJa__content
-    .style-module-scss-module__RsorJa__subTitle
+    .style-module-scss-module__RsorJa__mainTitle
     .style-module-scss-module__RsorJa__subWord,
-  .style-module-scss-module__RsorJa__subWord,
-  .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__subTitle {
-    font-size: clamp(2.75rem, 11vw, 5.5rem) !important;
+  .style-module-scss-module__RsorJa__subWord {
+    font-size: clamp(1.65rem, 7.6vw, 5.25rem) !important;
+  }
+
+  .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__body {
+    gap: 0.08em !important;
   }
 
   .style-module-scss-module__RsorJa__content
@@ -283,11 +318,15 @@
     .style-module-scss-module__RsorJa__word,
   .style-module-scss-module__RsorJa__word,
   .style-module-scss-module__RsorJa__content
-    .style-module-scss-module__RsorJa__subTitle
+    .style-module-scss-module__RsorJa__mainTitle
     .style-module-scss-module__RsorJa__subWord,
-  .style-module-scss-module__RsorJa__subWord,
-  .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__subTitle {
-    font-size: clamp(2.25rem, 13vw, 3.75rem) !important;
+  .style-module-scss-module__RsorJa__subWord {
+    font-size: clamp(1.15rem, 8.8vw, 2.65rem) !important;
+  }
+
+  .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__body {
+    justify-content: space-between !important;
+    gap: 0.06em !important;
   }
 
   .style-module-scss-module__RsorJa__content .style-module-scss-module__RsorJa__about {
@@ -322,6 +361,41 @@ body {
 
 .container {
   max-width: 100%;
+}
+
+/* Footer brand wordmark — tall, lighter BRICK & SOUL (no glyph squash) */
+.style-module-scss-module__1eBtna__boldTextImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Give the sticky footer enough room for the taller wordmark */
+:root {
+  --footerHeight: clamp(28rem, 18rem + 28vw, 58rem);
+}
+
+/* Projects award cursor preview — hidden until hover */
+.style-module-scss-module__nQLyka__awardPreview {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 280px !important;
+  height: 200px !important;
+  margin: 0 !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none !important;
+  z-index: 500 !important;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  will-change: transform, opacity;
 }
 
 /* Menu: full-row click target + selectable labels (marquee is visual-only) */
